@@ -941,49 +941,49 @@
             
             <div class="slideshow-container">
                 <div class="slide active">
-                    <video class="slide-video" muted>
+                    <video class="slide-video" muted playsinline webkit-playsinline>
                         <source src="Images/63E2978E-BDFB-40E8-A0D7-25EB5E95D873.MP4"  type="video/mp4">
                         Your browser does not support video playback.
                     </video>
                 </div>
 
                 <div class="slide">
-                    <video class="slide-video" muted>
+                    <video class="slide-video" muted playsinline webkit-playsinline>
                         <source src="Images/712C9CBE-9BC0-4510-9CD6-796EBCB4ED6C.MP4" type="video/mp4">
                         Your browser does not support video playback.
                     </video>
                 </div>
 
                 <div class="slide">
-                    <video class="slide-video" muted>
+                    <video class="slide-video" muted playsinline webkit-playsinline>
                         <source src="Images/728D553B-D9F6-43F6-9990-D8AFBB83272B.MP4" type="video/mp4">
                         Your browser does not support video playback.
                     </video>
                 </div>
 
                 <div class="slide">
-                    <video class="slide-video" muted>
+                    <video class="slide-video" muted playsinline webkit-playsinline>
                         <source src="Images/96E1A22C-3F23-4B31-B57B-E04E6D8697C5.MP4" type="video/mp4">
                         Your browser does not support video playback.
                     </video>
                 </div>
 
                 <div class="slide">
-                    <video class="slide-video" muted>
+                    <video class="slide-video" muted playsinline webkit-playsinline>
                         <source src="Images/E62B5D34-8771-4431-AC7B-1624CA65C0B7.MP4" type="video/mp4">
                         Your browser does not support video playback.
                     </video>
                 </div>
 
                 <div class="slide">
-                    <video class="slide-video" muted>
+                    <video class="slide-video" muted playsinline webkit-playsinline>
                         <source src="Images/F873BE9F-BE7B-45CE-83E1-4301065C9F39.MP4" type="video/mp4">
                         Your browser does not support video playback.
                     </video>
                 </div>
 
                 <div class="slide">
-                    <video class="slide-video" muted>
+                    <video class="slide-video" muted playsinline webkit-playsinline>
                         <source src="Images/504A96E4-46D0-4858-8CB6-676824CF982C.MP4" type="video/mp4">
                         Your browser does not support video playback.
                     </video>
@@ -1183,17 +1183,43 @@
         });
 
         // Initialize: play first video on page load
-        window.addEventListener('load', () => {
-            const firstVideo = document.querySelector('.slide.active video');
-            if (firstVideo) {
-                // Small delay to ensure page is ready
-                setTimeout(() => {
-                    firstVideo.play().catch(e => {
-                        console.log('Autoplay prevented on load:', e);
-                    });
-                }, 500);
-            }
-        });
+        // window.addEventListener('load', () => {
+        //     const firstVideo = document.querySelector('.slide.active video');
+        //     if (firstVideo) {
+        //         // Small delay to ensure page is ready
+        //         setTimeout(() => {
+        //             firstVideo.play().catch(e => {
+        //                 console.log('Autoplay prevented on load:', e);
+        //             });
+        //         }, 500);
+        //     }
+        // });
+
+        // Initialize: play first video when user scrolls to slideshow
+        let slideshowStarted = false;
+
+        const slideshowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !slideshowStarted) {
+                    slideshowStarted = true;
+                    const firstVideo = document.querySelector('.slide.active video');
+                    if (firstVideo) {
+                        setTimeout(() => {
+                            firstVideo.play().catch(e => {
+                                console.log('Autoplay prevented:', e);
+                                // If autoplay fails, user will need to tap play
+                            });
+                        }, 300);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe the slideshow section
+        const slideshowSection = document.querySelector('.slideshow-section');
+        if (slideshowSection) {
+            slideshowObserver.observe(slideshowSection);
+        }
 
         // Keyboard navigation for slideshow
         document.addEventListener('keydown', (e) => {
