@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day My Love ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 100%);
+            color: #2d2d2d;
+        }
+
+        /* Background Music Control */
+        #musicToggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff1744, #f50057);
+            color: #fff;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 23, 68, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #musicToggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 23, 68, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            #musicToggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        .intro-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .intro-section.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .heart-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 40px;
+        }
+
+        .heart {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #ff4d6d;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.5s infinite;
+            top: 50%;
+            left: 50%;
+            margin: -50px 0 0 -50px;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background: #ff4d6d;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 50px;
+            top: 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
+        }
+
+        .intro-text {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .intro-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(45deg, #fff, #ffccd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .intro-text p {
+            font-size: 1.2rem;
+            animation: fadeInUp 1s ease 0.5s backwards;
+            color: #fff;
+        }
+
+        .skip-button {
+            position: absolute;
+            bottom: 40px;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            animation: fadeIn 1s ease 2s backwards;
+            transition: all 0.3s ease;
+        }
+
+        .skip-button:hover {
+            background: #fff;
+            color: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 15s infinite;
+            opacity: 0;
+        }
+
+        /* Continuously flying hearts that stay on screen */
+        .flying-heart {
+            position: absolute;
+            font-size: 25px;
+            animation: fly 8s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fly {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(100px, -80px) rotate(90deg);
+            }
+            50% {
+                transform: translate(200px, -40px) rotate(180deg);
+            }
+            75% {
+                transform: translate(100px, -100px) rotate(270deg);
+            }
+        }
+
+        /* Bounce hearts */
+        .bounce-heart {
+            position: absolute;
+            font-size: 20px;
+            animation: bounceAround 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes bounceAround {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-150px) scale(1.2);
+            }
+        }
+
+        /* Pulse hearts */
+        .pulse-heart {
+            position: absolute;
+            font-size: 35px;
+            animation: pulseHeart 3s ease-in-out infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes pulseHeart {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        .main-content {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .main-content.visible {
+            opacity: 1;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #ffebf0 100%);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff1744, #f50057);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            line-height: 1.8;
+            color: #4a4a4a;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: "↓";
+            font-size: 2rem;
+            color: #ff6b9d;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .gallery-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #fef5f8 0%, #ffe8f0 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #ff1744, #f50057);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 23, 68, 0.15);
+            transition: transform 0.3s ease;
+            background: #ffffff;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 23, 68, 0.25);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 350px;
+            object-fit:contain;
+            display: block;
+        }
+
+        .tofill {
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            padding: 25px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.98) 40%);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .gallery-caption h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ff1744;
+        }
+
+        .gallery-caption p {
+            font-size: 1rem;
+            color: #5a5a5a;
+            line-height: 1.6;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .letter-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff0f5 100%);
+        }
+
+        .letter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 50px 30px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 23, 68, 0.2);
+            box-shadow: 0 10px 40px rgba(255, 23, 68, 0.1);
+        }
+
+        .letter-container p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.5rem;
+            margin-top: 40px;
+            color: #ff1744;
+            font-family: 'Brush Script MT', cursive;
+        }
+
+        .timeline-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #fef5f8 0%, #ffe4f0 100%);
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff1744, #f50057);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            width: calc(50% - 40px);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 23, 68, 0.2);
+            box-shadow: 0 5px 20px rgba(255, 23, 68, 0.1);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: #ff1744;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 4px rgba(255, 23, 68, 0.2);
+            z-index: 2;
+        }
+
+        .timeline-date {
+            color: #ff1744;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .timeline-text {
+            color: #5a5a5a;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .timeline-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
+            border-radius: 10px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        /* Reasons Section */
+        .reasons-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #ffebf0 100%);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reason-card {
+            background: #ffffff;
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(255, 23, 68, 0.12);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 23, 68, 0.1);
+        }
+
+        .reason-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(255, 23, 68, 0.2);
+        }
+
+        .reason-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .reason-card h3 {
+            font-size: 1.4rem;
+            color: #ff1744;
+            margin-bottom: 15px;
+        }
+
+        .reason-card p {
+            font-size: 1rem;
+            color: #5a5a5a;
+            line-height: 1.6;
+        }
+
+        /* Quotes Section */
+        .quotes-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #fef5f8 0%, #ffe8f0 100%);
+        }
+
+        .quotes-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .quote-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(255, 23, 68, 0.12);
+            border: 2px solid rgba(255, 23, 68, 0.15);
+        }
+
+        .quote-mark {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255, 23, 68, 0.15);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            line-height: 1.8;
+            font-style: italic;
+            margin-top: 40px;
+        }
+
+        /* Slideshow Section */
+        .slideshow-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+        }
+
+        .slideshow-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            background: #ffffff;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(255, 23, 68, 0.15);
+            overflow: hidden;
+            border: 3px solid rgba(255, 23, 68, 0.1);
+        }
+
+        .slide {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-video {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Navigation Buttons */
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 23, 68, 0.8);
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-nav:hover {
+            background: rgba(255, 23, 68, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slide-nav.prev {
+            left: 20px;
+        }
+
+        .slide-nav.next {
+            right: 20px;
+        }
+
+        /* Dots Navigation */
+        .slide-dots {
+            text-align: center;
+            padding: 20px 0;
+            background: #fff;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 8px;
+            background-color: rgba(255, 23, 68, 0.3);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot:hover,
+        .dot.active {
+            background-color: #ff1744;
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .final-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+        }
+
+        .final-message {
+            max-width: 700px;
+        }
+
+        .final-message h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff1744, #f50057);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .final-message p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .intro-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .final-message h2 {
+                font-size: 2rem;
+            }
+
+            .letter-container {
+                padding: 30px 20px;
+            }
+
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quotes-container {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                padding: 10px;
+            }
+
+            .slide-nav.prev {
+                left: 10px;
+            }
+
+            .slide-nav.next {
+                right: 10px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="Images/Janam Janam (Instrumental).mp3" type="audio/mpeg">
+        Your browser does not support audio playback.
+    </audio>
+    
+    <!-- Music Control Button -->
+    <button id="musicToggle" onclick="toggleMusic()">🔊</button>
+
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="intro-section" id="introSection">
+        <div class="floating-hearts" id="introHearts"></div>
+        <div style="font-size: 120px; animation: heartbeat 1.5s infinite; margin-bottom: 30px;">❤️</div>
+        <div class="intro-text">
+            <h1>For My Beautiful Love</h1>
+            <p>Happy Valentine's Day ❤️</p>
+        </div>
+        <button class="skip-button" onclick="skipIntro()">Enter ♥</button>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <section class="hero">
+            <h1>To The Love of My Life</h1>
+            <p>Every moment with you is a treasure. You light up my world in ways I never thought possible. This website is a small token of my endless love for you.</p>
+            <div class="scroll-indicator"></div>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-title">Our Beautiful Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="Images/ea5ee26d-950d-45e3-ac80-67be1354f445 copy.jpg" alt="My Love" class="gallery-image">
+                    <div class="gallery-caption">
+                        <h3>Your Smile</h3>
+                        <p>The way you smile lights up my entire world. Every time I see it, I fall in love all over again.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Images/IMG_8655.jpg" alt="My Love" class="gallery-image">
+                    <div class="gallery-caption">
+                        <h3>Your Eyes</h3>
+                        <p>I could get lost in your eyes forever. They tell stories that words never could.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Images/IMG_2071.jpg" alt="My Love" class="gallery-image">
+                    <div class="gallery-caption">
+                        <h3>Your Laughter</h3>
+                        <p>Your laugh is my favorite sound in the world. It brings joy to my heart every single time.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="Images/IMG_1806.JPG" alt="My Love" class="gallery-image tofill">
+                    <div class="gallery-caption">
+                        <h3>Together Forever</h3>
+                        <p>With you, I've found my forever. You're my best friend, my love, my everything.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="letter-section">
+            <h2 class="section-title">A Letter From My Heart</h2>
+            <div class="letter-container">
+                <p>My Dearest Niku,</p>
+                <p>Khuppppppppp sara sorry and khuuppp sara pream tula. I know atta tu majya varti khup chidli ahes ane tula bilkul pan nahi bolicha majya sobat pan Niku im missing you like hell..</p>
+                <p>Every day with you is a gift. Your smile brightens my darkest days, your baad baadd is music to my ears, and your presence gives me strength. You are the best best bestesttttt persion i have every met</p>
+                <p>I promise to cherish you, support you, and love you with all my heart for all the days of my life. Thank you for being my partner, my confidant, my sweetest friend, and my greatest blessing.</p>
+                <p>Malla mahiti appan ek line parent frends ahet but i want to make you valentine special, after all you are importent, your simle is important, so a small gift from me</p>
+                <p>Happy Valentine's Day, my lovely friend. Here's to forever with you.</p>
+                <div class="signature">With all my love, Always yours ❤️</div>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">Our Journey Together</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">First Meeting</div>
+                        <div class="timeline-text">The day we met, I knew my life would never be the same. You walked into my world and made everything brighter.</div>
+                        <img src="Images/IMG_1155.jpg" alt="First Meeting" class="timeline-image">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">First Date</div>
+                        <div class="timeline-text">Our first date was magical. Time flew by as we talked for hours, and I didn't want the night to end.</div>
+                        <img src="Images/IMG_1387.JPG" alt="First Date" class="timeline-image">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Our Video Call</div>
+                        <div class="timeline-text">The call that i can never forgot, yes you took the efforts to call first, but the joy enjoyment and the moment i can never forget.</div>
+                        <img src="Images/IMG_2709.PNG" alt="Video Call" class="timeline-image">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Today & Forever</div>
+                        <div class="timeline-text">Every moment with you has led us here. I can't wait to create countless more beautiful memories together.</div>
+                        <img src="Images/IMG_2241.PNG" alt="Today & Forever" class="timeline-image tofill">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Food Moments Slideshow Section -->
+        <section class="slideshow-section">
+            <h2 class="section-title">Our Delicious Moments Together 🍰</h2>
+            
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <video class="slide-video" muted>
+                        <source src="Images/63E2978E-BDFB-40E8-A0D7-25EB5E95D873.MP4"  type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+
+                <div class="slide">
+                    <video class="slide-video" muted>
+                        <source src="Images/712C9CBE-9BC0-4510-9CD6-796EBCB4ED6C.MP4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+
+                <div class="slide">
+                    <video class="slide-video" muted>
+                        <source src="Images/728D553B-D9F6-43F6-9990-D8AFBB83272B.MP4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+
+                <div class="slide">
+                    <video class="slide-video" muted>
+                        <source src="Images/96E1A22C-3F23-4B31-B57B-E04E6D8697C5.MP4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+
+                <div class="slide">
+                    <video class="slide-video" muted>
+                        <source src="Images/E62B5D34-8771-4431-AC7B-1624CA65C0B7.MP4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+
+                <div class="slide">
+                    <video class="slide-video" muted>
+                        <source src="Images/F873BE9F-BE7B-45CE-83E1-4301065C9F39.MP4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+
+                <div class="slide">
+                    <video class="slide-video" muted>
+                        <source src="Images/504A96E4-46D0-4858-8CB6-676824CF982C.MP4" type="video/mp4">
+                        Your browser does not support video playback.
+                    </video>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="slide-nav prev" onclick="changeSlide(-1)">❮</button>
+                <button class="slide-nav next" onclick="changeSlide(1)">❯</button>
+
+                <!-- Dots Navigation -->
+                <div class="slide-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                    <span class="dot" onclick="currentSlide(7)"></span>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="final-section">
+            <div class="final-message">
+                <h2>I Love You ❤️</h2>
+                <p>Thank you for being you. Thank you for loving me. Thank you for making every day an adventure worth living.</p>
+                <p>You are my today and all of my tomorrows.</p>
+                <p style="font-size: 2rem; margin-top: 30px;">Happy Valentine's Day, My Love! 💕</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            skipIntro();
+        }, 6000);
+
+        function skipIntro() {
+            document.getElementById('introSection').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('visible');
+        }
+
+
+
+        // Background Music Control
+        let musicPlaying = false;
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🔇';
+                musicPlaying = false;
+            } else {
+                bgMusic.play();
+                musicToggle.textContent = '🔊';
+                musicPlaying = true;
+            }
+        }
+
+        // Auto-play music when intro is skipped
+        function skipIntro() {
+            document.getElementById('introSection').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('visible');
+            
+            // Start background music
+            bgMusic.play().catch(e => {
+                console.log('Autoplay prevented:', e);
+            });
+            musicPlaying = true;
+            musicToggle.textContent = '🔊';
+        }
+
+
+
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const introContainer = document.getElementById('introHearts');
+            const heartEmojis = ['❤️', '💕', '💖', '💗'];
+            
+            // Function to add hearts to a container
+            function addHearts(targetContainer) {
+                // Just 2 floating hearts that go up
+                for (let i = 0; i < 2; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                    heart.style.left = (20 + Math.random() * 60) + '%';
+                    heart.style.fontSize = (25 + Math.random() * 15) + 'px';
+                    heart.style.animationDelay = Math.random() * 5 + 's';
+                    heart.style.animationDuration = (12 + Math.random() * 8) + 's';
+                    targetContainer.appendChild(heart);
+                }
+
+                // 2 flying hearts that move around continuously
+                for (let i = 0; i < 3; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'flying-heart';
+                    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                    heart.style.left = (10 + Math.random() * 70) + '%';
+                    heart.style.top = (20 + Math.random() * 50) + '%';
+                    heart.style.animationDelay = i * 2 + 's';
+                    heart.style.animationDuration = (8 + Math.random() * 4) + 's';
+                    targetContainer.appendChild(heart);
+                }
+
+                // 1 pulsing heart
+                // const heart = document.createElement('div');
+                // heart.className = 'pulse-heart';
+                // heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                // heart.style.left = (30 + Math.random() * 40) + '%';
+                // heart.style.top = (30 + Math.random() * 40) + '%';
+                // heart.style.animationDelay = '1s';
+                // targetContainer.appendChild(heart);
+            }
+            
+            // Add hearts to both containers
+            addHearts(container);
+            addHearts(introContainer);
+        }
+
+        createFloatingHearts();
+
+        // Slideshow functionality
+        let slideIndex = 1;
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        // function showSlide(n) {
+        //     const slides = document.querySelectorAll('.slide');
+        //     const dots = document.querySelectorAll('.dot');
+            
+        //     if (n > slides.length) { slideIndex = 1 }
+        //     if (n < 1) { slideIndex = slides.length }
+            
+        //     // Pause all videos when switching slides
+        //     slides.forEach(slide => {
+        //         const video = slide.querySelector('video');
+        //         if (video) {
+        //             video.pause();
+        //         }
+        //         slide.classList.remove('active');
+        //     });
+            
+        //     dots.forEach(dot => dot.classList.remove('active'));
+            
+        //     slides[slideIndex - 1].classList.add('active');
+        //     dots[slideIndex - 1].classList.add('active');
+        // }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            
+            // Pause all videos when switching slides
+            slides.forEach(slide => {
+                const video = slide.querySelector('video');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0; // Reset to beginning
+                }
+                slide.classList.remove('active');
+            });
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
+
+            // Auto-play the current video
+            const currentVideo = slides[slideIndex - 1].querySelector('video');
+            if (currentVideo) {
+                currentVideo.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                });
+            }
+        }
+
+        // Auto-advance to next video when current video ends
+        document.querySelectorAll('.slide-video').forEach((video, index) => {
+            video.addEventListener('ended', () => {
+                // Move to next slide when video ends
+                changeSlide(1);
+            });
+        });
+
+        // Initialize: play first video on page load
+        window.addEventListener('load', () => {
+            const firstVideo = document.querySelector('.slide.active video');
+            if (firstVideo) {
+                // Small delay to ensure page is ready
+                setTimeout(() => {
+                    firstVideo.play().catch(e => {
+                        console.log('Autoplay prevented on load:', e);
+                    });
+                }, 500);
+            }
+        });
+
+        // Keyboard navigation for slideshow
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.gallery-item, .timeline-item, .letter-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
